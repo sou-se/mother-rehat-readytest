@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>産前産後リハビリ 担当者資格確認テスト</title>
+<style>
+  :root {
+    --teal:    #1B5E8A;
+    --teal-lt: #D6E8F5;
+    --green:   #1A6B3A;
+    --green-lt:#D6F0E3;
+    --purple:  #7B2D8B;
+    --purple-lt:#EDD6F5;
+    --orange:  #B05A00;
+    --orange-lt:#FAE8D0;
+    --red:     #8B2020;
+    --red-lt:  #FAD6D6;
+    --blue:    #3A5A8B;
+    --blue-lt: #D6DFFA;
+    --gray-50: #F8FAFC;
+    --gray-100:#F1F5F9;
+    --gray-200:#E2E8F0;
+    --gray-400:#94A3B8;
+    --gray-600:#475569;
+    --gray-800:#1E293B;
+    --white:   #FFFFFF;
+    --radius:  10px;
+    --shadow:  0 4px 24px rgba(27,94,138,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    width: 100%;
+    background: var(--teal);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .site-header .logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .site-header .sep { color: rgba(255,255,255,0.3); font-size: 18px; }
+  .site-header .title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* ── MAIN CARD ── */
+  .card {
+    width: 100%;
+    max-width: 760px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 32px 16px;
+    overflow: hidden;
+  }
+
+  /* ── SECTION SCREENS ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── INTRO ── */
+  .intro-hero {
+    background: linear-gradient(135deg, var(--teal) 0%, #2980b9 100%);
+    padding: 40px 40px 32px;
+    color: #fff;
+  }
+  .intro-hero h1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .intro-hero p {
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+  .intro-body { padding: 32px 40px; }
+  .intro-body h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--teal-lt);
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 560px) { .info-grid { grid-template-columns: 1fr; } }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-600);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .field label .req { color: #e53e3e; margin-left: 3px; }
+  .field input, .field select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 7px;
+    font-size: 14px;
+    color: var(--gray-800);
+    background: var(--gray-50);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(27,94,138,0.12);
+    background: #fff;
+  }
+  .field input.error { border-color: #e53e3e; }
+
+  .notice-box {
+    background: var(--teal-lt);
+    border-left: 4px solid var(--teal);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+  }
+  .notice-box p { font-size: 13px; color: var(--gray-600); line-height: 1.7; }
+  .notice-box strong { color: var(--teal); }
+
+  .chapter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .chip {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #fff;
+  }
+
+  .btn-start {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+    letter-spacing: 0.03em;
+  }
+  .btn-start:hover { background: #154d73; }
+  .btn-start:active { transform: scale(0.99); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    padding: 0;
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 28px 8px;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .progress-info .chap-badge {
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 11px;
+  }
+  .progress-bar {
+    height: 5px;
+    background: var(--gray-200);
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+    transition: width .4s ease, background-color .4s;
+  }
+
+  /* ── QUESTION ── */
+  .q-body { padding: 28px 36px 24px; }
+  .q-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 10px;
+  }
+  .q-text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--gray-800);
+    margin-bottom: 22px;
+  }
+  .choices { display: flex; flex-direction: column; gap: 10px; }
+  .choice-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 18px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    background: var(--white);
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--gray-800);
+    transition: border-color .15s, background .15s;
+    width: 100%;
+  }
+  .choice-btn:hover:not(:disabled) {
+    border-color: var(--teal);
+    background: var(--teal-lt);
+  }
+  .choice-btn .key {
+    font-weight: 800;
+    font-size: 13px;
+    min-width: 22px;
+    color: var(--gray-400);
+    margin-top: 1px;
+  }
+  .choice-btn.selected {
+    border-color: var(--teal);
+    background: var(--teal-lt);
+  }
+  .choice-btn.selected .key { color: var(--teal); }
+  .choice-btn.correct {
+    border-color: var(--green);
+    background: var(--green-lt);
+  }
+  .choice-btn.correct .key { color: var(--green); }
+  .choice-btn.wrong {
+    border-color: var(--red);
+    background: var(--red-lt);
+  }
+  .choice-btn.wrong .key { color: var(--red); }
+
+  .q-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 36px 28px;
+    gap: 12px;
+  }
+  .btn-ghost {
+    padding: 10px 20px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 7px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: border-color .15s;
+  }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+  .btn-primary {
+    padding: 10px 28px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .btn-primary:hover { background: #154d73; }
+  .btn-primary:disabled { background: var(--gray-400); cursor: not-allowed; }
+
+  .explanation-box {
+    margin: 4px 36px 20px;
+    padding: 14px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    line-height: 1.7;
+    display: none;
+  }
+  .explanation-box.show { display: block; }
+  .explanation-box.correct-exp {
+    background: var(--green-lt);
+    border-left: 4px solid var(--green);
+    color: #1a3d2b;
+  }
+  .explanation-box.wrong-exp {
+    background: var(--red-lt);
+    border-left: 4px solid var(--red);
+    color: #5a1a1a;
+  }
+  .explanation-box strong { display: block; margin-bottom: 4px; }
+
+  /* ── RESULT ── */
+  .result-hero {
+    padding: 40px 40px 28px;
+    text-align: center;
+  }
+  .score-ring {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring .ring-bg { fill: none; stroke: var(--gray-200); stroke-width: 10; }
+  .score-ring .ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+  .score-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-center .num { font-size: 32px; font-weight: 800; }
+  .score-center .denom { font-size: 13px; color: var(--gray-400); }
+  .result-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .result-sub { font-size: 14px; color: var(--gray-600); }
+
+  .result-table { margin: 20px 36px; }
+  .result-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .result-table th {
+    background: var(--gray-100);
+    padding: 8px 14px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--gray-600);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .result-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+  .result-table tr:last-child td { border-bottom: none; }
+  .pct-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pct-track {
+    flex: 1;
+    height: 6px;
+    background: var(--gray-200);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pct-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+  .badge-pass {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+  .badge-pass.pass { background: var(--green-lt); color: var(--green); }
+  .badge-pass.fail { background: var(--red-lt); color: var(--red); }
+
+  .result-actions {
+    display: flex;
+    gap: 12px;
+    padding: 16px 36px 36px;
+    flex-wrap: wrap;
+  }
+  .btn-outline {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px;
+    border: 1.5px solid var(--teal);
+    border-radius: 7px;
+    background: var(--white);
+    color: var(--teal);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: background .15s;
+  }
+  .btn-outline:hover { background: var(--teal-lt); }
+  .btn-send {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .btn-send:hover { background: #145c2f; }
+  .btn-send:disabled { background: var(--gray-400); cursor: not-allowed; }
+
+  .send-status {
+    margin: 0 36px 20px;
+    padding: 12px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    display: none;
+  }
+  .send-status.ok { background: var(--green-lt); color: var(--green); display: block; }
+  .send-status.err { background: var(--red-lt); color: var(--red); display: block; }
+
+  /* ── LOADING OVERLAY ── */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(27,94,138,0.18);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .overlay.show { display: flex; }
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--teal-lt);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 600px) {
+    .card { margin: 16px 8px; }
+    .intro-hero, .intro-body { padding: 28px 20px; }
+    .q-body { padding: 20px 20px 16px; }
+    .q-nav { padding: 0 20px 20px; }
+    .explanation-box { margin: 4px 20px 16px; }
+    .result-hero { padding: 28px 20px; }
+    .result-table { margin: 16px 20px; }
+    .result-actions { padding: 12px 20px 28px; }
+    .send-status { margin: 0 20px 16px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .progress-info { padding: 10px 16px 6px; }
+    .q-text { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">想千グループ</span>
+  <span class="sep">|</span>
+  <span class="title">産前産後リハビリ 担当者資格確認テスト</span>
+</header>
+
+<div class="card">
+
+  <!-- ============================================================ INTRO -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-hero">
+      <h1>産前産後リハビリテーション<br>担当者資格確認テスト</h1>
+      <p>各章から10問ずつ、全60問をランダムに出題します。<br>合格基準：48問以上正解（80%以上）</p>
+    </div>
+    <div class="intro-body">
+      <h2>受験者情報の入力</h2>
+      <div class="info-grid">
+        <div class="field">
+          <label>氏名<span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="例：山田 太郎">
+        </div>
+        <div class="field">
+          <label>年齢<span class="req">*</span></label>
+          <input type="number" id="f-age" placeholder="例：28" min="18" max="80">
+        </div>
+        <div class="field">
+          <label>職業・職種<span class="req">*</span></label>
+          <input type="text" id="f-job" placeholder="例：理学療法士">
+        </div>
+        <div class="field">
+          <label>メールアドレス<span class="req">*</span></label>
+          <input type="email" id="f-email" placeholder="例：yamada@example.com">
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <p><strong>テストについて</strong><br>
+        各章（全6章）から10問をランダム抽出し、合計60問を出題します。各問題に解答後、正誤と解説を確認できます。テスト終了後、結果はGoogle Chatの担当者スペースに自動送信されます。</p>
+      </div>
+
+      <div class="chapter-chips" id="chip-list"></div>
+
+      <button class="btn-start" onclick="startTest()">テストを開始する →</button>
+    </div>
+  </div>
+
+  <!-- ============================================================ QUESTION -->
+  <div class="screen" id="screen-question">
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="chap-badge" id="chap-badge">第1章</span>
+        <span id="prog-text">問 1 / 60</span>
+        <span id="score-live">正答：0問</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="q-body">
+      <div class="q-num" id="q-num">問題 1</div>
+      <div class="q-text" id="q-text"></div>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <div class="explanation-box" id="exp-box"></div>
+
+    <div class="q-nav">
+      <span id="q-status" style="font-size:13px;color:var(--gray-400)"></span>
+      <button class="btn-primary" id="btn-next" onclick="nextQuestion()" disabled>次の問題 →</button>
+    </div>
+  </div>
+
+  <!-- ============================================================ RESULT -->
+  <div class="screen" id="screen-result">
+    <div class="result-hero">
+      <div class="score-ring">
+        <svg viewBox="0 0 130 130" width="130" height="130">
+          <circle class="ring-bg" cx="65" cy="65" r="55"/>
+          <circle class="ring-fill" id="ring-fill" cx="65" cy="65" r="55"
+                  stroke-dasharray="345.6" stroke-dashoffset="345.6"/>
+        </svg>
+        <div class="score-center">
+          <span class="num" id="res-score">0</span>
+          <span class="denom">/60問</span>
+        </div>
+      </div>
+      <div class="result-title" id="res-title">テスト結果</div>
+      <div class="result-sub" id="res-sub"></div>
+    </div>
+
+    <div class="result-table">
+      <table>
+        <thead>
+          <tr>
+            <th>章</th>
+            <th>正答数</th>
+            <th>正答率</th>
+          </tr>
+        </thead>
+        <tbody id="result-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="send-status" id="send-status"></div>
+
+    <div class="result-actions">
+      <button class="btn-outline" onclick="retakeTest()">もう一度受験する</button>
+      <button class="btn-send" id="btn-send" onclick="sendResult()">Google Chatに結果を送信</button>
+    </div>
+  </div>
+
+</div><!-- /card -->
+
+<div class="overlay" id="overlay"><div class="spinner"></div></div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// ★ WEBHOOK URL をここに設定してください
+// ════════════════════════════════════════════════════════════
+const WEBHOOK_URL = 'https://chat.googleapis.com/v1/spaces/XXXXXXXX/messages?key=XXXXXX&token=XXXXXX';
+
+// ════════════════════════════════════════════════════════════
+// 問題データ（全100問 → 各章からランダム10問抽出）
+// ════════════════════════════════════════════════════════════
+const CHAPTERS = [
+  {
+    id: 1,
+    title: '第1章',
+    label: '妊婦の医学的基礎',
+    color: '#1B5E8A',
+    bg: '#D6E8F5',
+    questions: [
+      { q:'1. 分娩予定日の算出として正しいのはどれか。', choices:['A. 最終月経初日から280日（40週）','B. 受精日から280日','C. 着床日から40週','D. 最終月経初日から260日（37週）'], answer:'A', explanation:'分娩予定日は最終月経初日を0週0日として計算し、280日（40週0日）が基準となる。妊娠週数の計算はこの「最終月経初日起算」が臨床上の標準である。' },
+      { q:'2. 妊娠初期（第1三半期）の期間として正しいのはどれか。', choices:['A. 妊娠0〜8週','B. 妊娠0〜13週','C. 妊娠4〜16週','D. 妊娠0〜20週'], answer:'B', explanation:'妊娠初期は0〜13週（第1三半期）、中期は14〜27週（第2三半期）、後期は28週以降（第3三半期）とされる。' },
+      { q:'3. 妊娠中のリラキシン分泌による主な影響はどれか。', choices:['A. 骨盤靱帯の弛緩','B. 子宮筋の収縮促進','C. 血圧の上昇','D. 体重の増加'], answer:'A', explanation:'リラキシンは黄体・胎盤から分泌されるホルモンで、骨盤輪靱帯を弛緩させ分娩を容易にするが、腰痛や骨盤帯痛の原因ともなる。' },
+      { q:'4. 正常な妊娠中の血液量の変化として正しいのはどれか。', choices:['A. 約10〜15%増加','B. 約30〜50%増加','C. 約60〜70%増加','D. ほとんど変化しない'], answer:'B', explanation:'妊娠中は循環血液量が約30〜50%増加する。これにより生理的な希釈性貧血が生じることがある。' },
+      { q:'5. 妊娠中の子宮増大による横隔膜への影響として正しいのはどれか。', choices:['A. 横隔膜が下降し肺活量が増加する','B. 横隔膜が上昇し機能的残気量が低下する','C. 呼吸数が著明に低下する','D. 1回換気量が減少する'], answer:'B', explanation:'妊娠後期には子宮増大により横隔膜が約4cm上昇し、機能的残気量（FRC）が低下する。一方で1回換気量は増加する。' },
+      { q:'6. 妊娠中に生じる「仰臥位低血圧症候群」の主な原因はどれか。', choices:['A. 心拍出量の増加','B. 下大静脈の圧迫による静脈還流の低下','C. 胎盤からのホルモン分泌','D. 交感神経の亢進'], answer:'B', explanation:'妊娠後期に仰臥位をとると増大した子宮が下大静脈を圧迫し、静脈還流が減少して血圧低下・気分不快を生じる。' },
+      { q:'7. 妊娠中の腹直筋離開（DRA）について正しいのはどれか。', choices:['A. 妊娠初期にのみ生じる','B. 腹白線が水平方向に伸張・菲薄化する','C. 出産後は自然に完全回復する','D. 帝王切開のみで発生する'], answer:'B', explanation:'腹直筋離開は子宮増大に伴い腹白線が伸張・菲薄化する現象で、妊娠後期〜産後に多くみられ、体幹安定性に影響を及ぼす。' },
+      { q:'8. 妊娠中の心拍出量の変化として最も正しいのはどれか。', choices:['A. 妊娠初期から約30〜50%増加する','B. 妊娠後期に限り20%増加する','C. 妊娠中は著明に低下する','D. 変化しない'], answer:'A', explanation:'心拍出量は妊娠初期（8〜10週）から増加し始め、中期には最大30〜50%増加する。' },
+      { q:'9. 妊娠中の浮腫が最も生じやすい部位はどれか。', choices:['A. 顔面・上肢','B. 下肢・足背','C. 腹部・胸部','D. 背部・腰部'], answer:'B', explanation:'妊娠中の浮腫は重力の影響と下大静脈圧迫による静脈圧上昇から下肢・足背に最も生じやすい。' },
+      { q:'10. 妊娠中に生じるプロゲステロン上昇の影響として正しいのはどれか。', choices:['A. 腸管蠕動運動の亢進','B. 消化管括約筋の弛緩による胃食道逆流','C. 血糖値の低下','D. 血圧の上昇'], answer:'B', explanation:'プロゲステロンは平滑筋弛緩作用を持ち、下部食道括約筋を弛緩させることで胃食道逆流（つわり・胸やけ）が生じる。' },
+      { q:'11. 妊娠中の骨盤底筋群への負荷として正しいのはどれか。', choices:['A. 子宮増大・胎児体重による下方への持続的圧迫','B. リラキシンにより骨盤底が緊張する','C. 骨盤底筋への負荷は産後にのみ生じる','D. 骨盤底への影響は軽微である'], answer:'A', explanation:'増大した子宮・胎児・羊水の重力負荷が骨盤底筋群に持続的に加わり、骨盤底機能障害のリスクが高まる。' },
+      { q:'12. 妊娠に伴う重心位置の変化として正しいのはどれか。', choices:['A. 重心が後方かつ下方へ移動する','B. 重心が前方かつ上方へ移動する','C. 重心位置はほとんど変化しない','D. 重心が左右に偏位する'], answer:'B', explanation:'妊娠後期には腹部膨隆により重心が前方かつ上方へ移動し、代償的に脊柱前弯が増強する。' },
+      { q:'13. 妊娠中の腰椎前弯増強の主な原因として正しいのはどれか。', choices:['A. 体重増加による椎間板圧縮','B. 重心前方移動への代償と腸腰筋短縮','C. 骨盤後傾の増強','D. 脊柱管狭窄の進行'], answer:'B', explanation:'腹部増大による重心の前方移動を補償するため腰椎前弯が増強し、腸腰筋の短縮・腹筋群の伸張が加わり腰痛が生じやすい。' },
+      { q:'14. 妊娠中に実施する運動療法の禁忌として正しいのはどれか。', choices:['A. ウォーキング','B. 前置胎盤（医師の許可なく運動を行わない）','C. 軽度の浮腫','D. 妊娠30週以降'], answer:'B', explanation:'前置胎盤は出血・早産リスクが高く、運動療法の原則禁忌に含まれる。ただし週数・出血の有無等により担当産科医の判断を優先する。' },
+      { q:'15. 妊娠中の運動強度の目安として推奨されているのはどれか。', choices:['A. Borg指数11〜13（ややきつい程度）','B. Borg指数17〜19（かなりきつい）','C. 最大心拍数の90%以上','D. 安静時心拍数+60拍以上'], answer:'A', explanation:'妊娠中の有酸素運動は「ちょっときつい（Borg 11〜13）」程度が目安とされ、過負荷を避けることが重要である。' },
+      { q:'16. 妊娠中の神経学的変化について正しいのはどれか。', choices:['A. 正中神経の浮腫・圧迫による手根管症候群が増加する','B. 坐骨神経痛は妊娠中に生じない','C. 末梢神経障害は分娩後に初めて発症する','D. 神経伝導速度は全般的に上昇する'], answer:'A', explanation:'妊娠中は体液貯留により手根管内圧が上昇し手根管症候群が増加する。また腰椎前弯増強により坐骨神経痛も起こりやすい。' },
+      { q:'17. 妊娠糖尿病の診断基準（IADPSG基準）に含まれないのはどれか。', choices:['A. 空腹時血糖 92mg/dL以上','B. 1時間値 180mg/dL以上','C. 2時間値 153mg/dL以上','D. HbA1c 6.5%以上'], answer:'D', explanation:'妊娠糖尿病は75g OGTTで空腹時≧92、1時間値≧180、2時間値≧153のいずれか1点以上で診断する。HbA1c 6.5%以上は顕性糖尿病の診断基準であり妊娠糖尿病には含まれない。' },
+      { q:'18. 妊娠中の静脈血栓塞栓症（VTE）リスクについて正しいのはどれか。', choices:['A. 非妊娠時と比較してリスクは変わらない','B. 妊娠中は凝固能亢進・静脈うっ滞によりVTEリスクが増加する','C. 産後のVTEリスクは妊娠中より低い','D. VTEは帝王切開時にのみリスクとなる'], answer:'B', explanation:'妊娠中は凝固因子増加・線溶低下・子宮による下大静脈圧迫によりVTEリスクが非妊娠時の4〜5倍に増加する。産後も高リスクが続く。' },
+      { q:'19. 妊娠中の体重増加の目安（妊娠前BMI 18.5以上25.0未満の場合）として正しいのはどれか。', choices:['A. 5〜7kg','B. 7〜10kg','C. 10〜13kg','D. 15〜20kg'], answer:'C', explanation:'2021年改訂の日本産科婦人科学会の目安では、妊娠前BMI 18.5以上25.0未満（普通体重）の場合、推奨体重増加量は10〜13kgとされている。' },
+      { q:'20. 妊娠中の呼吸機能変化として正しい組み合わせはどれか。', choices:['A. 1回換気量↑ / 機能的残気量↑','B. 1回換気量↑ / 機能的残気量↓','C. 1回換気量↓ / 機能的残気量↓','D. 1回換気量↓ / 機能的残気量↑'], answer:'B', explanation:'横隔膜上昇によりFRCは低下するが、プロゲステロンの呼吸中枢刺激作用により1回換気量は増加し、換気量全体は増加する。' },
+    ]
+  },
+  {
+    id: 2,
+    title: '第2章',
+    label: '妊娠経過のリスク',
+    color: '#1A6B3A',
+    bg: '#D6F0E3',
+    questions: [
+      { q:'21. 切迫早産の定義として正しいのはどれか。', choices:['A. 妊娠22週〜36週6日の間に規則的な子宮収縮があり、早産が切迫している状態','B. 妊娠20週未満の子宮収縮','C. 予定日超過の場合','D. 妊娠37週以降の不規則な子宮収縮'], answer:'A', explanation:'切迫早産は妊娠22週0日〜36週6日の期間に子宮収縮・頸管短縮等を呈し早産に至る危険がある状態をいう。' },
+      { q:'22. 妊娠高血圧症候群（HDP）の診断基準として正しいのはどれか。', choices:['A. 妊娠20週以降に初めて高血圧を発症した場合','B. 妊娠前から高血圧が存在する場合','C. 収縮期血圧130mmHg以上のみで診断される','D. 蛋白尿の有無は診断に関係しない'], answer:'A', explanation:'HDPは妊娠20週以降に初めて高血圧（収縮期≧140または拡張期≧90mmHg）を発症したものをいい、蛋白尿合併の有無で子癇前症等に分類される。' },
+      { q:'23. 子癇前症の重症化サインとして正しいのはどれか。', choices:['A. 軽度の浮腫のみ','B. 頭痛・視覚障害・右上腹部痛・血小板減少','C. 血圧が125/80mmHg程度','D. 蛋白尿のみで症状なし'], answer:'B', explanation:'子癇前症の重症化サインには頭痛・視力障害・上腹部痛（肝被膜拡張）・血小板減少・肝酵素上昇などがある。速やかな医療介入が必要。' },
+      { q:'24. 前置胎盤の理学療法実施における対応として正しいのはどれか。', choices:['A. 通常のリハビリを実施する','B. 医師の許可なく積極的な運動は行わない','C. 有酸素運動は問題ない','D. ストレッチのみであれば実施可能'], answer:'B', explanation:'前置胎盤は性器出血・早産のリスクが高く、運動療法は原則禁忌。理学療法士は必ず担当医師に確認し、安全な介入の範囲を把握する必要がある。' },
+      { q:'25. 妊娠中の仰臥位低血圧症候群に対する理学療法士の対応として正しいのはどれか。', choices:['A. 仰臥位で安静を保つ','B. 左側臥位に体位変換する','C. 下肢挙上（トレンデレンブルグ）位をとる','D. 座位を維持する'], answer:'B', explanation:'左側臥位をとることで子宮による下大静脈圧迫が軽減し、静脈還流が回復する。妊娠20週以降のリハビリでは仰臥位を長時間避ける。' },
+      { q:'26. 妊娠中の深部静脈血栓症（DVT）疑い所見として理学療法士が注意すべきはどれか。', choices:['A. 両側対称的な下腿浮腫','B. 一側下肢の腫脹・発赤・熱感・疼痛と左右差のある下腿周径増大','C. 軽度の両側下腿だるさのみ','D. 安静時の一過性の下腿痛のみ'], answer:'B', explanation:'DVTでは患側下肢に腫脹・発赤・熱感・疼痛が生じ、左右の下腿周径差（1cm以上）が重要な所見となる。かつて使われたHomans徴候は感度・特異度が低く、現在は主要所見として推奨されない。DVTが疑われた場合は即時運動を中止し医師へ報告する。' },
+      { q:'27. 妊娠中に腰痛が増悪しやすい時期はどれか。', choices:['A. 妊娠5週ごろ','B. 妊娠12〜16週ごろ','C. 妊娠24〜36週ごろ','D. 腰痛は妊娠中に増悪しない'], answer:'C', explanation:'腰椎前弯増強・体重増加・リラキシン分泌ピークが重なる妊娠中後期（特に24〜36週）に腰痛・骨盤帯痛が増悪しやすい。' },
+      { q:'28. 骨盤帯痛（PGP）の鑑別として用いられるテストはどれか。', choices:['A. Trendelenburg test','B. Posterior Pelvic Pain Provocation Test（P4テスト）','C. Lachman test','D. McMurray test'], answer:'B', explanation:'P4テスト（仰臥位で股関節90°屈曲位にし大腿軸方向に圧迫）は仙腸関節痛の誘発テストとして感度・特異度が高く、骨盤帯痛のスクリーニングに用いられる。' },
+      { q:'29. 妊娠中の腹直筋離開（DRA）のスクリーニング方法として正しいのはどれか。', choices:['A. 超音波検査のみで診断できる','B. 仰臥位で頭部挙上し腹白線の陥凹・幅を触診で確認する','C. 立位での目視のみで確認できる','D. 妊娠中は評価不可'], answer:'B', explanation:'仰臥位でcrunch動作（頭部挙上）を行い、腹白線中央の陥凹と幅を指で触診する方法が簡便なスクリーニングとして広く用いられる。' },
+      { q:'30. 妊娠中の運動療法中止の絶対的警告サインとして正しいのはどれか。', choices:['A. 軽度の息切れ','B. 性器出血・腹痛・羊水漏出','C. 運動後の軽度筋肉痛','D. 軽度の疲労感'], answer:'B', explanation:'性器出血・持続する腹痛・羊水漏出・胸痛・強い息切れ・重度の頭痛・浮腫の急増は運動の絶対的中止サインであり、速やかに医師へ連絡する。' },
+      { q:'31. 妊娠中のめまい・失神が生じやすい状況として正しいのはどれか。', choices:['A. 座位から立位への体位変換時（起立性低血圧）','B. 横臥位の維持時','C. 食後のみ','D. 夜間就寝時のみ'], answer:'A', explanation:'妊娠中は末梢血管抵抗の低下・子宮への血流増加から起立性低血圧が生じやすく、座位から立位への変換時にめまい・失神が起こりやすい。' },
+      { q:'32. 多胎妊娠（双胎）の理学療法上の注意点として正しいのはどれか。', choices:['A. 単胎妊娠と同様の運動処方が可能','B. 子宮への負荷が大きく早産・腰痛リスクが増加するため低強度での管理が必要','C. 多胎妊娠は理学療法の禁忌','D. 体重管理のみ注意すれば問題ない'], answer:'B', explanation:'多胎妊娠は単胎より子宮増大が著しく早産・腰痛・腹直筋離開リスクが高い。運動強度を単胎より低く設定し、医師との連携のもとで管理する。' },
+      { q:'33. 妊娠中の皮膚変化で理学療法に関連するのはどれか。', choices:['A. 腹部の妊娠線（ストレッチマーク）','B. 顔面の肝斑','C. 乳輪の色素沈着','D. 爪の縦線'], answer:'A', explanation:'妊娠線は皮膚伸張により生じるコラーゲン断裂で、腹直筋離開・皮膚感覚変化を伴う場合があり、腹部への触診・テーピング時に注意が必要。' },
+      { q:'34. 妊娠中の胸郭変化として正しいのはどれか。', choices:['A. 胸郭横径が縮小する','B. 肋骨が拡張し胸郭横径が約2〜3cm拡大する','C. 胸骨が下降する','D. 胸郭は変化しない'], answer:'B', explanation:'子宮増大に伴い横隔膜が上昇し、代償的に胸郭が横方向に拡大（約2〜3cm）する。これは産後の呼吸理学療法に関連する。' },
+      { q:'35. 妊娠中の尿失禁リスク因子として正しいのはどれか。', choices:['A. 経産回数が少ない','B. 経腟分娩の回数・胎児の大きさ・骨盤底の過伸展','C. 帝王切開のみ','D. 妊娠中の運動制限'], answer:'B', explanation:'経腟分娩回数増加・巨大児・分娩時の骨盤底過伸展は尿失禁の主要なリスク因子である。産前からの骨盤底筋トレーニングが予防に有効とされる。' },
+      { q:'36. 妊娠中の坐骨神経痛の特徴として正しいのはどれか。', choices:['A. 主に上肢に放散する','B. 腰椎〜殿部〜下肢への放散痛として出現する','C. 坐骨神経痛は妊娠中に生じない','D. 左右対称に生じる'], answer:'B', explanation:'妊娠中の坐骨神経痛は腰椎前弯増強・椎間板への負荷・梨状筋症候群等により腰椎〜殿部〜下肢へ放散痛として出現することが多い。' },
+      { q:'37. 合併症のない妊娠における中等度有酸素運動の影響として正しいのはどれか。', choices:['A. 合併症のない妊娠では中等度有酸素運動は概ね安全であり母体・胎児双方に有益とされる','B. あらゆる有酸素運動は胎児に有害である','C. 運動は胎盤血流を著明に低下させる','D. 運動は胎児心拍数を著明に低下させる'], answer:'A', explanation:'合併症のない妊娠において中等度有酸素運動は概ね安全であり、ACOGをはじめとする国際ガイドラインでも推奨されている。過負荷は禁忌であり、個人差・合併症の有無に応じた判断が必要である。' },
+      { q:'38. 妊娠中の水中運動（アクアビクス）の利点として誤っているのはどれか。', choices:['A. 浮力により体重負荷が軽減される','B. 仰臥位低血圧症候群のリスクが低減される','C. 関節への負荷が増加する','D. 浮腫の軽減効果がある'], answer:'C', explanation:'水中運動では浮力により関節への負荷が軽減される（減少する）。関節負荷が増加するは誤り。水圧による浮腫軽減・仰臥位回避も利点。' },
+      { q:'39. 妊婦への問診で必ず確認すべき事項として正しいのはどれか。', choices:['A. 妊娠週数・産科医の指示・合併症の有無','B. 体重のみ','C. 食事内容のみ','D. 運動歴のみ'], answer:'A', explanation:'理学療法士は妊娠週数・担当産科医からの指示内容・合併症（前置胎盤・切迫早産等）の有無を必ず確認し、安全な介入計画を立案する。' },
+      { q:'40. 妊娠中のインフォームドコンセントとして理学療法士が説明すべき内容として正しいのはどれか。', choices:['A. 運動の効果のみを説明する','B. 運動のメリット・リスク・中止基準・緊急時の対応を含めて説明する','C. 産科医への報告は不要','D. 口頭説明のみで書面は不要'], answer:'B', explanation:'妊婦への理学療法においては運動の効果・リスク・禁忌・中止基準・緊急時連絡体制を丁寧に説明し、理解と同意を得た上で介入を開始する。' },
+    ]
+  },
+  {
+    id: 3,
+    title: '第3章',
+    label: '産後のリスク',
+    color: '#7B2D8B',
+    bg: '#EDD6F5',
+    questions: [
+      { q:'41. 産褥期の定義として正しいのはどれか。', choices:['A. 分娩直後から1週間','B. 分娩後から子宮復古・乳腺機能が安定するまでの約6〜8週','C. 出産後3ヶ月間','D. 授乳期間全般'], answer:'B', explanation:'産褥期は分娩後から子宮復古・全身の産前状態への回復が完了するまでの約6〜8週間を指す。' },
+      { q:'42. 産後の子宮復古不全の主な原因として正しいのはどれか。', choices:['A. 授乳','B. 卵膜・胎盤の遺残・感染','C. 歩行開始','D. 骨盤底運動'], answer:'B', explanation:'子宮復古不全は卵膜・胎盤組織の遺残・子宮内膜炎等の感染が主な原因であり、悪露の増量・持続・発熱として現れる。' },
+      { q:'43. 産後の骨盤底機能障害（PFD）のリスク因子として正しいのはどれか。', choices:['A. 帝王切開のみが唯一のリスク因子である','B. 経腟分娩・器械分娩・第2期遷延・巨大児・経産回数増加','C. 年齢は関係ない','D. 体重は無関係'], answer:'B', explanation:'PFDのリスク因子は経腟分娩（特に器械分娩）・第2期遷延・巨大児・高齢・肥満・多産などが挙げられる。帝王切開も完全にリスクを回避できるわけではない。' },
+      { q:'44. 産後の腹直筋離開（DRA）の評価・治療で正しいのはどれか。', choices:['A. 腹直筋離開があれば全ての腹筋運動が禁忌','B. 離開幅・深さの評価後、腹横筋活性化から段階的に運動を進める','C. すぐに腹筋のクランチ運動から開始する','D. 自然回復を待つのみでよい'], answer:'B', explanation:'産後DRAは腹白線の機能評価（幅・張力）に基づき、腹横筋・骨盤底の活性化から段階的に負荷を上げる。高腹腔内圧運動（クランチ等）は適切なタイミングまで避ける。' },
+      { q:'45. 産後の骨盤底筋トレーニング（PFMT）開始時期として推奨されるのはどれか。', choices:['A. 分娩後6週間後から','B. 医師の許可のもと産後1〜2日から段階的に開始可能','C. 授乳終了後','D. 産後6ヶ月以降'], answer:'B', explanation:'PFMTは合併症がなければ産後早期（1〜2日）から緩やかに開始することが推奨されており、尿失禁・骨盤臓器脱の予防・回復に有効である。' },
+      { q:'46. 産後の二次性恥骨結合離開の特徴として正しいのはどれか。', choices:['A. 産後に限局した恥骨上部痛・歩行困難を呈する','B. 全例で手術が必要','C. 産後恥骨痛は正常である','D. 理学療法の対象外'], answer:'A', explanation:'恥骨結合離開は経腟分娩時の外力・リラキシンによる靱帯弛緩で生じ、恥骨上痛・開脚困難・歩行障害を呈する。骨盤帯サポートと段階的荷重理学療法が主な治療となる。' },
+      { q:'47. 産後のVTE（静脈血栓塞栓症）が最も多発する時期はどれか。', choices:['A. 産後6週間以内','B. 産後6ヶ月〜1年','C. 妊娠初期','D. 分娩中のみ'], answer:'A', explanation:'産後のVTEは凝固能亢進・床上安静・骨盤内静脈うっ滞から産後6週間以内、特に産後2〜3日が最も高リスクとされる。' },
+      { q:'48. 産後の尿失禁の主な種類で最も頻度が高いのはどれか。', choices:['A. 切迫性尿失禁','B. 腹圧性尿失禁','C. 溢流性尿失禁','D. 機能性尿失禁'], answer:'B', explanation:'産後に最も多い尿失禁は腹圧性尿失禁（咳・くしゃみ・運動時の尿漏れ）で、骨盤底筋の支持機能低下が主因。骨盤底筋トレーニングが第一選択となる。' },
+      { q:'49. 産後の仙腸関節機能障害に対する理学療法として正しいのはどれか。', choices:['A. 積極的なランニングから開始する','B. 骨盤ベルトを使用しながら段階的な体幹安定化トレーニングを行う','C. 安静のみで改善を待つ','D. 関節注射のみが有効'], answer:'B', explanation:'産後の仙腸関節機能障害はリラキシン残存・筋力低下が原因。骨盤ベルトによる外的支持と体幹・骨盤帯周囲筋の安定化トレーニングを段階的に進める。' },
+      { q:'50. 帝王切開後の瘢痕に対する理学療法として正しいのはどれか。', choices:['A. 創部の瘢痕管理（モビライゼーション）は産後3ヶ月以降から行う','B. 創部閉鎖確認後（産後6〜8週以降）から段階的に瘢痕モビライゼーションを行う','C. 帝王切開後は骨盤底への影響はない','D. 瘢痕管理は必要ない'], answer:'B', explanation:'帝王切開瘢痕は癒着による骨盤底機能障害・慢性疼痛の原因となる。創部完全閉鎖確認後（6〜8週）から瘢痕軟化・組織モビライゼーションを開始する。' },
+      { q:'51. 産後の腰痛マネジメントで優先されるのはどれか。', choices:['A. 重い荷物を無理に持つ','B. 腹横筋・骨盤底のコアアクティベーション＋姿勢指導','C. コルセットのみで対処する','D. 安静のみ'], answer:'B', explanation:'産後腰痛は体幹深部筋（腹横筋・多裂筋）の機能低下が主因。コアアクティベーション・骨盤底トレーニングと授乳・抱っこ時の姿勢指導を組み合わせる。' },
+      { q:'52. 産後の骨粗鬆症（妊娠授乳関連骨粗鬆症）について正しいのはどれか。', choices:['A. 閉経後にのみ発症する','B. 授乳中のカルシウム需要増加・エストロゲン低下により腰椎・股関節に生じることがある','C. 産後骨粗鬆症はきわめてまれで無視してよい','D. 運動療法は禁忌'], answer:'B', explanation:'妊娠授乳関連骨粗鬆症は授乳期の骨カルシウム動員亢進・エストロゲン低下を背景に腰椎・股関節骨折として現れることがある。理学療法士は腰背部痛が強い産後患者に注意が必要。' },
+      { q:'53. 産後の体重管理で理学療法士が関与すべき内容として正しいのはどれか。', choices:['A. 産後2週間での急激な体重減少を推奨する','B. 段階的な有酸素運動と筋力回復を支援し、急激な体重減少は避ける','C. 体重管理は栄養士のみの領域である','D. 授乳中の運動は禁忌'], answer:'B', explanation:'産後の体重管理は骨盤底・体幹機能回復と並行して段階的に行う。産後6週以降の中等度有酸素運動は授乳に影響せず安全とされている。' },
+      { q:'54. 産後の性機能障害（疼痛性交）の原因として正しいのはどれか。', choices:['A. 授乳によるエストロゲン低下・会陰切開瘢痕・骨盤底過緊張','B. 帝王切開後のみに生じる','C. 産後性機能障害は治療不要','D. 精神的な問題のみが原因'], answer:'A', explanation:'産後の疼痛性交は授乳中のエストロゲン低下（膣乾燥）・会陰部瘢痕・骨盤底筋の過緊張が複合的に原因となる。骨盤底リラクゼーション・瘢痕モビライゼーションが有効。' },
+      { q:'55. 産後の骨盤臓器脱（POP）について正しいのはどれか。', choices:['A. 産後早期には生じない','B. 骨盤底支持組織の損傷により膀胱・直腸・子宮の下垂が生じることがある','C. 理学療法は無効','D. 全例で手術が必要'], answer:'B', explanation:'骨盤臓器脱は分娩時の骨盤底損傷により生じ、重症度によって骨盤底筋トレーニングが第一選択治療として有効。理学療法士の役割は大きい。' },
+    ]
+  },
+  {
+    id: 4,
+    title: '第4章',
+    label: '産後の姿勢変化',
+    color: '#B05A00',
+    bg: '#FAE8D0',
+    questions: [
+      { q:'56. 産後にみられやすい姿勢の特徴として正しいのはどれか。', choices:['A. 腰椎前弯の増強（継続）','B. 骨盤後傾・腰椎後弯・頭部前方位・円背の組み合わせ','C. 姿勢の変化は産後6ヶ月で完全に戻る','D. 産後は腰椎前弯が消失し過屈曲位になる'], answer:'B', explanation:'産後は授乳・抱っこ動作から骨盤後傾・腰椎後弯・頭部前方位・円背が習慣化しやすい傾向がある。ただし産後姿勢は分娩様式・筋機能・育児環境により個人差が大きく、評価は個別に行うことが重要である。' },
+      { q:'57. 授乳姿勢が産後の頸部・肩に与える影響として正しいのはどれか。', choices:['A. 頭部前方位により僧帽筋上部・肩甲挙筋への負荷が増加する','B. 授乳姿勢は頸部に影響しない','C. 頭部後退位が生じる','D. 肩甲骨内転が増加する'], answer:'A', explanation:'授乳中の持続的な頭部前方位・円背姿勢は僧帽筋上部・肩甲挙筋・斜角筋の過緊張と頸部痛・肩こりの原因となる。' },
+      { q:'58. 産後の骨盤前後傾の変化について正しいのはどれか。', choices:['A. 妊娠中の前傾が産後も持続する','B. 授乳・育児動作から骨盤後傾傾向へと変化しやすい','C. 産後の骨盤傾斜は変化しない','D. 骨盤は常に中間位を保つ'], answer:'B', explanation:'妊娠中は前方重心への代償で骨盤前傾傾向が多いが、産後は授乳・抱っこ・床での育児動作から骨盤後傾・腰椎後弯へ移行しやすい。' },
+      { q:'59. 産後の肩こり・頸部痛の主な原因として正しいのはどれか。', choices:['A. 睡眠不足のみ','B. 授乳・抱っこによる頭部前方位・円背姿勢の習慣化','C. ホルモン変化のみ','D. 産後の肩こりは治療不要'], answer:'B', explanation:'授乳・抱っこ時の継続的な頭部前方位・前かがみ姿勢が頸部・肩の過緊張を招く。姿勢指導・胸椎可動性改善・肩甲骨安定化エクササイズが有効。' },
+      { q:'60. 産後の体幹深部筋機能低下の特徴として正しいのはどれか。', choices:['A. 腹横筋・多裂筋の活動低下により腰椎・骨盤の動的安定性が低下する','B. 産後は体幹筋機能が向上する','C. 体幹深部筋は産後6週で自然回復する','D. 腹筋群の機能は産後に影響を受けない'], answer:'A', explanation:'妊娠・分娩により腹横筋・多裂筋・骨盤底の機能が低下し、腰椎・骨盤の動的安定性が損なわれる。産後の体幹リハビリの核となる知識である。' },
+      { q:'61. 産後の「スウェイバック姿勢」の特徴として正しいのはどれか。', choices:['A. 股関節屈曲・膝関節過伸展・骨盤前傾','B. 骨盤後傾・股関節過伸展・腰椎後弯・胸椎後弯増強','C. 腰椎前弯増強・胸椎後弯減少','D. 前方への重心移動がない'], answer:'B', explanation:'スウェイバック姿勢は骨盤後傾・腰椎後弯・胸椎後弯増強・頭部前方位が特徴。産後の育児動作習慣化で多くみられ、腰痛・骨盤底機能障害と関連する。' },
+      { q:'62. 産後の姿勢改善のためのアプローチとして適切でないのはどれか。', choices:['A. 腹横筋・多裂筋の活性化','B. 胸椎可動性の改善','C. 重いバーベルを用いた高負荷スクワット','D. 授乳姿勢の指導・ポジショニング改善'], answer:'C', explanation:'産後早期の高負荷スクワットは腹腔内圧を急激に高め骨盤底への過負荷となる。産後の姿勢改善は体幹深部筋活性化・胸椎モビリゼーション・姿勢指導から段階的に行う。' },
+      { q:'63. 産後の膝関節痛と姿勢の関連として正しいのはどれか。', choices:['A. 産後の膝痛は骨折のみが原因','B. 骨盤後傾・大腿四頭筋機能低下・過回内足から膝関節への負荷増加が生じる','C. 産後に膝痛は生じない','D. 膝痛は理学療法の対象外'], answer:'B', explanation:'産後は体重変化・骨盤後傾・足部過回内（リラキシン残存）が重なり膝関節への力学的負荷が変化する。下肢アライメント・筋力評価が重要となる。' },
+      { q:'64. 産後の足部変化として正しいのはどれか。', choices:['A. 産後は足部に変化がない','B. リラキシンの影響で足アーチが低下し足長が増加することがある','C. 足部は骨格なので変化しない','D. 足幅は必ず減少する'], answer:'B', explanation:'リラキシンによる靱帯弛緩は足部にも及び、足縦アーチ低下・扁平足・足長増加が生じることがある。産後の足部疼痛・足底筋膜炎の背景となる。' },
+      { q:'65. 産後の姿勢評価で重要なのはどれか。', choices:['A. 体重計測のみ','B. 静的アライメント・動的動作（歩行・抱っこ動作）・体幹筋機能の総合評価','C. 筋力測定のみ','D. 医師のみが評価する'], answer:'B', explanation:'産後姿勢評価は静的アライメント（骨盤傾斜・脊柱カーブ・頭部位置）と動的評価（歩行・育児動作時の姿勢）、体幹深部筋機能を総合的に評価することが重要。' },
+      { q:'66. 産後の胸椎後弯増強に対する理学療法として適切なのはどれか。', choices:['A. 胸椎伸展可動域改善・菱形筋・下部僧帽筋の強化','B. 胸椎前弯を誘導する','C. 頸椎の伸展強化のみ','D. 腰椎屈曲運動のみ'], answer:'A', explanation:'産後の円背姿勢には胸椎伸展モビライゼーション・胸椎後弯に拮抗する菱形筋・下部僧帽筋の筋力強化、前胸部の柔軟性改善が有効である。' },
+      { q:'67. 産後の抱っこ動作指導において重要なポイントはどれか。', choices:['A. 腰椎への負担より育児優先で姿勢は問わない','B. 体を赤ちゃんに近づけ、体幹を活性化した状態で抱き上げる','C. 片側のみで抱く','D. 常に前傾姿勢で抱く'], answer:'B', explanation:'抱っこ動作では赤ちゃんを自分の体に引き付け体幹深部筋を活性化した状態で持ち上げることが腰椎・骨盤への負担軽減につながる。' },
+      { q:'68. 産後の寝返り・起き上がり動作指導として正しいのはどれか。', choices:['A. 腹直筋離開があっても従来通りの起き上がり方でよい','B. ログロール動作（全身を一直線に回転させ側臥位経由で起き上がる）を指導する','C. 起き上がりは運動負荷が低いため指導不要','D. 腹直筋強化のために素早い起き上がりを推奨する'], answer:'B', explanation:'腹直筋離開がある産後患者には腹腔内圧を急激に上昇させない「ログロール法」（側臥位経由の起き上がり）を日常動作として指導することが重要。' },
+      { q:'69. 産後の立位姿勢指導における体幹のニュートラルポジションの意義として正しいのはどれか。', choices:['A. 最大限の腰椎前弯を保つ','B. 腹横筋・多裂筋・骨盤底が最も協調活動しやすい脊柱アライメントを保つ','C. 常に骨盤後傾を維持する','D. 姿勢は無関係'], answer:'B', explanation:'ニュートラルスパインとは腰椎・骨盤が中間位を保ち体幹深部筋が最も効率よく協調活動できる位置。産後リハビリの基盤となる姿勢概念。' },
+      { q:'70. 産後の肩関節痛の原因として授乳と関連するのはどれか。', choices:['A. 授乳姿勢による肩甲骨前傾・上腕骨内旋位が棘上筋腱へのインピンジメントリスクを増加させる','B. 授乳と肩関節痛に関連はない','C. 肩関節痛は産後3年後にのみ生じる','D. 肩甲骨後退が原因'], answer:'A', explanation:'長時間の授乳姿勢（前傾・肩甲骨前傾・上腕骨内旋）は肩峰下インピンジメントを引き起こしやすく、肩甲骨安定化・胸椎可動性改善が予防・治療として有効。' },
+    ]
+  },
+  {
+    id: 5,
+    title: '第5章',
+    label: 'メンタルヘルス',
+    color: '#8B2020',
+    bg: '#FAD6D6',
+    questions: [
+      { q:'71. 産後うつ病について正しいのはどれか。', choices:['A. 産後2〜3日に生じるマタニティブルーズと同義である','B. DSM-5では分娩後4週以内の発症が基準だが、臨床的には産後数か月以内の大うつ病エピソードも産後うつとして扱われることが多い','C. 産後1年以内はすべて産後うつである','D. 意欲低下は産後うつの症状に含まれない'], answer:'B', explanation:'DSM-5では「周産期発症」の特定用語は妊娠中または分娩後4週以内の発症に適用される。ただし母子保健・臨床現場では産後数か月以内に発症する大うつ病エピソードも広く産後うつとして扱われる。マタニティブルーズ（産後2〜3日・自然消退）とは明確に区別する。' },
+      { q:'72. マタニティブルーズの特徴として正しいのはどれか。', choices:['A. 産後10〜14日に発症し数週間持続する','B. 産後2〜3日にピークを迎え通常1〜2週以内に自然消退する','C. 入院治療が必要な重篤な状態である','D. 全ての産婦に必ず発症する'], answer:'B', explanation:'マタニティブルーズは産後2〜3日にピークをとる一過性の気分変動（涙もろさ・不安・易刺激性）で、通常1〜2週以内に自然消退する。治療を要する産後うつとの鑑別が重要。' },
+      { q:'73. 産後うつ病のスクリーニングに用いられるツールはどれか。', choices:['A. MMSE（認知機能検査）','B. エジンバラ産後うつ病質問票（EPDS）','C. GCS（グラスゴーコーマスケール）','D. FIM（機能的自立度評価）'], answer:'B', explanation:'EPDSは10項目の自己記入式質問票で産後うつ病のスクリーニングとして国際的に広く使用される。9点以上で産後うつ疑いとされ（施設により基準は異なる）、専門家への紹介が推奨される。' },
+      { q:'74. 妊娠中の不安障害の特徴として正しいのはどれか。', choices:['A. 妊娠中は不安が軽減される','B. 妊娠中の不安は出産への恐怖・胎児への心配・育児への不安として現れ、産後うつのリスク因子となる','C. 不安症状は産後にのみ生じる','D. 不安障害は産前産後に生じない'], answer:'B', explanation:'妊娠中の不安障害は産後うつの最大のリスク因子の一つ。分娩恐怖・胎児への心配・育児不安として現れ、早期介入・支援が産後うつ予防につながる。' },
+      { q:'75. 産後うつ病の主なリスク因子として正しいのはどれか。', choices:['A. 既往のうつ病・産後うつ、社会的サポートの欠如','B. 初産のみがリスク因子','C. 帝王切開は産後うつと無関係','D. 経済状況は関係ない'], answer:'A', explanation:'産後うつのリスク因子には既往うつ病・産後うつ再発・社会的孤立・夫婦関係不良・育児ストレス・望まない妊娠・産後合併症などがある。' },
+      { q:'76. 産後精神病（産褥精神病）の特徴として正しいのはどれか。', choices:['A. 産後早期（多くは2週間以内）に急激に発症し幻覚・妄想・錯乱を呈する重篤な状態','B. 産後1年後に発症する','C. 治療不要で自然に回復する','D. 軽度の気分変動のみ'], answer:'A', explanation:'産褥精神病は産後早期（多くは産後2週間以内、特に産後数日以内）に急激に発症し、幻覚・妄想・興奮・錯乱等を呈する重篤な精神科的緊急事態。入院管理・精神科専門医への即時紹介が必要。' },
+      { q:'77. 理学療法士が産後うつの患者を担当する際の対応として適切なのはどれか。', choices:['A. 精神科的問題は無視してリハビリを進める','B. 患者の精神状態を観察し必要に応じて医師・多職種チームに報告・連携する','C. うつ症状があれば即座にリハビリを終了する','D. 精神症状に対して独自にカウンセリングを行う'], answer:'B', explanation:'理学療法士は患者の精神状態の変化を観察し、EPDSスコアの高値・希死念慮の表出等を認めた場合は速やかに担当医・多職種チームへ報告し連携することが求められる。' },
+      { q:'78. 産後うつ病の非薬物療法として有効とされているのはどれか。', choices:['A. 有酸素運動・対人関係療法・社会的サポートの強化','B. 完全な床上安静','C. 栄養制限','D. 社会的孤立'], answer:'A', explanation:'産後うつの非薬物療法として有酸素運動（セロトニン・エンドルフィン増加）・対人関係療法・母親グループ参加などの社会的サポート強化が有効とされている。' },
+      { q:'79. 妊娠中のうつ病が胎児に与える影響として正しいのはどれか。', choices:['A. 妊娠中のうつは胎児に影響しない','B. 治療されないうつ病は早産・低出生体重・胎児発育不全のリスクを高める','C. 抗うつ薬は全例で禁忌','D. うつ病は妊娠後期のみに発症する'], answer:'B', explanation:'治療されない妊娠中のうつ病はコルチゾール過剰・行動上の問題（栄養不足・喫煙）等を通じ早産・低出生体重・胎児発育不全リスクを高める。治療の利益・リスクを産科医と協議することが重要。' },
+      { q:'80. 産前産後の不眠への理学療法士の関わりとして適切なのはどれか。', choices:['A. 不眠は産後に無関係のため関わらない','B. 睡眠衛生指導・リラクゼーション技法・過度な運動負荷を避けた運動療法で支援する','C. 催眠薬の処方を行う','D. 睡眠不足は無視してリハビリを進める'], answer:'B', explanation:'産前産後の不眠は精神健康・回復に大きく影響する。理学療法士は睡眠衛生指導・漸進的筋弛緩法等のリラクゼーション・適切な運動処方を通じて支援することができる。' },
+      { q:'81. 産後のボンディング障害（母子愛着障害）の特徴として正しいのはどれか。', choices:['A. 母親が赤ちゃんに愛着を感じられない・育児への恐怖・過度の育児不安','B. ボンディング障害は医師のみが評価する','C. 全ての産婦に生じる正常な状態','D. 産後1年後に初めて現れる'], answer:'A', explanation:'ボンディング障害は母子間の情緒的絆形成の困難で、産後うつとの関連が深い。理学療法士も育児中の表情・言動を観察し、多職種と連携した早期支援につなげる役割がある。' },
+      { q:'82. 産後のPTSD（外傷後ストレス障害）の原因として正しいのはどれか。', choices:['A. 産後PTSDは存在しない','B. トラウマ的な分娩体験・緊急帝王切開・新生児集中治療室への入室体験等がトリガーとなる','C. 全ての帝王切開でPTSDが生じる','D. PTSDは産後1年以上経過後のみ発症する'], answer:'B', explanation:'産後PTSDは緊急帝王切開・重篤な分娩合併症・NICU入室等のトラウマ的体験を契機に発症することがある。フラッシュバック・回避・過覚醒が主症状で専門的介入が必要。' },
+      { q:'83. 産前産後の父親（パートナー）のメンタルヘルスについて正しいのはどれか。', choices:['A. 父親のメンタルヘルス問題は存在しない','B. 父親にも産後うつが生じることがあり（約10%）、家族全体の支援が重要','C. 父親は育児ストレスを受けない','D. 父親のうつは子の発達に影響しない'], answer:'B', explanation:'父親・パートナーにも産後うつ（約10%）が生じることが明らかになっており、父親を含む家族全体へのメンタルヘルス支援が子どもの発達・家族機能に重要である。' },
+      { q:'84. 産後うつ予防のための社会資源として理学療法士が活用すべきものはどれか。', choices:['A. 孤立を促す','B. 母子保健センター・育児支援グループ・産後ケア施設等への紹介・連携','C. 薬物療法のみを推奨する','D. 家族への相談を禁ずる'], answer:'B', explanation:'産後うつ予防のためには地域の母子保健センター・産後ケアサービス・育児サポートグループ等の活用が有効であり、理学療法士も地域資源への橋渡し役を担うことができる。' },
+      { q:'85. 産前産後のメンタルヘルスにおける理学療法士の倫理的責務として正しいのはどれか。', choices:['A. メンタルヘルスに関する情報は患者に共有しない','B. 守秘義務を守りながら患者の安全が脅かされる場合は適切に多職種連携・報告を行う','C. 精神症状には全く関与しない','D. 理学療法士が精神科治療を直接行う'], answer:'B', explanation:'理学療法士は守秘義務を遵守しながらも、自傷・他害リスク・産後うつの重症化等、患者・新生児の安全が脅かされる状況では速やかに担当医・多職種チームへ報告する義務がある。' },
+    ]
+  },
+  {
+    id: 6,
+    title: '第6章',
+    label: '実務・その他',
+    color: '#3A5A8B',
+    bg: '#D6DFFA',
+    questions: [
+      { q:'86. 産前産後リハビリにおける多職種連携で理学療法士が連携すべき職種として正しいのはどれか。', choices:['A. 産科医・助産師・看護師・栄養士・心理士・社会福祉士','B. 理学療法士のみで完結できる','C. 産科医のみと連携する','D. 多職種連携は不要'], answer:'A', explanation:'産前産後リハビリは産科医・助産師・看護師・管理栄養士・心理士・社会福祉士等との多職種連携のもとで行われ、理学療法士は各専門家と協働しながら包括的支援を提供する。' },
+      { q:'87. 産後のリハビリテーション開始時期の判断において最優先されるのはどれか。', choices:['A. 患者本人の希望のみ','B. 産科医・助産師の許可・指示のもとで開始する','C. 理学療法士が独自に判断して開始する','D. 産後2週以降であれば許可は不要'], answer:'B', explanation:'産後リハビリは産科医・助産師からの医療的許可・指示に基づいて開始する。分娩様式・合併症・創部状態等を確認した上で安全な開始時期を判断する。' },
+      { q:'88. 母乳育児（授乳）中の運動療法について正しいのはどれか。', choices:['A. 授乳中の運動は完全に禁忌である','B. ACOGを含む国際ガイドラインでは産後の中等度運動は授乳に大きな悪影響を与えないとされており推奨されている','C. いかなる運動も乳汁分泌を著明に低下させる','D. 授乳中は有酸素運動のみ禁止される'], answer:'B', explanation:'ACOGをはじめとする国際ガイドラインでは、産後の中等度有酸素運動は母体・新生児双方に有益であり、授乳への悪影響はほとんどないとされている。高強度運動後に乳汁中乳酸濃度が一過性に上昇する報告があるが、臨床的に問題になることは少ない。' },
+      { q:'89. 産前産後の患者記録・情報管理として正しいのはどれか。', choices:['A. 妊娠週数・分娩情報・合併症を含む詳細な記録を維持する','B. 記録は最小限でよい','C. 個人情報のため記録は不要','D. 記録は産科医のみが行う'], answer:'A', explanation:'産前産後リハビリでは妊娠週数・分娩様式・合併症・骨盤底評価・精神状態・介入内容を詳細に記録し、多職種間の情報共有・継続的管理に活用する。' },
+      { q:'90. 産後の骨盤底筋トレーニング（ケーゲル運動）の正しい実施方法はどれか。', choices:['A. 適切な強度で収縮させ数秒保持後にしっかり弛緩させる動作を、自然な呼吸のもとで段階的に繰り返す','B. 腹圧をかけながら実施する','C. 一度に数百回行う','D. 息を止めて行う'], answer:'A', explanation:'骨盤底筋トレーニングは「収縮・保持・完全弛緩」のセットを自然な呼吸のもとで行う。「最大限収縮」は骨盤底過緊張がある患者には不適切であり、個々の状態に応じた強度で実施する。収縮だけでなく弛緩の完成も確認することが重要。' },
+      { q:'91. 産後の「中高強度運動・高負荷トレーニングへの復帰プロトコル」として近年推奨されているアプローチはどれか。', choices:['A. 産後2週で高強度インターバルトレーニングを開始する','B. 産科医の許可（概ね産後6〜8週以降）のもと骨盤底・体幹機能を評価しながら低強度→中強度→高強度と段階的に進める','C. 産後運動は1年間禁止','D. 骨盤底評価なしで競技復帰する'], answer:'B', explanation:'骨盤底筋トレーニング等の低負荷運動は産後早期から開始できるが、ランニング・高負荷トレーニング・競技スポーツへの復帰には産科医の許可（概ね6〜8週）のもと骨盤底・体幹機能を評価しながら段階的に負荷を上げるプロトコルが国際的に推奨されている。' },
+      { q:'92. 産後の女性アスリートへの復帰支援で重要なのはどれか。', choices:['A. 競技復帰は産後1ヶ月から可能','B. 骨盤底・体幹機能の回復評価を行い、競技特性に合わせた段階的復帰を支援する','C. アスリートは早期復帰が絶対優先','D. 産後は競技への復帰は不可能'], answer:'B', explanation:'産後の女性アスリートは一般的な産後リハビリを基盤としつつ、競技特性（衝撃・方向転換・高荷重等）に必要な骨盤底・体幹機能を段階的に評価し、安全な競技復帰をサポートする。' },
+      { q:'93. 産後の患者教育において理学療法士が実施すべき内容として正しいのはどれか。', choices:['A. 自己ケア方法・姿勢改善・運動中止サイン・専門家への相談タイミング','B. 医師の指示内容のみを伝える','C. 患者教育は他職種のみが行う','D. 退院時のみに実施する'], answer:'A', explanation:'理学療法士は骨盤底ケア・姿勢改善・運動のセルフプログラム・警戒症状・専門家への相談タイミングを含む包括的な患者教育を継続的に実施する。' },
+      { q:'94. 産前産後リハビリにおけるテーピング・サポーターの適応として正しいのはどれか。', choices:['A. 骨盤帯痛・腰痛・恥骨結合離開に対し骨盤ベルト・キネシオテーピングが用いられる','B. テーピングは禁忌','C. 産後のみ使用可能','D. テーピングは骨折専用'], answer:'A', explanation:'産前産後の骨盤帯痛・腰痛・恥骨結合離開等に対して骨盤ベルト・キネシオテーピングが疼痛緩和・機能改善に有効とされている。貼付位置・皮膚状態への注意も必要。' },
+      { q:'95. 産後の尿失禁に対する骨盤底筋トレーニングのエビデンスとして正しいのはどれか。', choices:['A. 効果は証明されていない','B. 腹圧性尿失禁に対し最も有効な保存的治療であり、系統的レビューで有効性が確立されている','C. 骨盤底筋トレーニングは産後2年以降でないと効果がない','D. 男性のみに有効'], answer:'B', explanation:'産後腹圧性尿失禁に対する骨盤底筋トレーニング（PFMT）はコクランレビューを含む多くの系統的レビューで最も有効な保存的治療として確立されている。' },
+      { q:'96. 産前産後に用いられる「バイオフィードバック」について正しいのはどれか。', choices:['A. バイオフィードバックは産後に禁忌','B. 骨盤底筋の収縮・弛緩をリアルタイムで視覚化することで正確な運動学習を促す','C. 骨盤底にのみ使用できる','D. バイオフィードバックは手術の代替である'], answer:'B', explanation:'バイオフィードバック（筋電図・圧センサー等）は骨盤底筋の収縮・弛緩をリアルタイムで視覚化し、正確なPFMTの習得・モチベーション向上に有効とされる。' },
+      { q:'97. 産後の腸管機能障害（便秘・排便困難）への理学療法の関与として正しいのはどれか。', choices:['A. 腸管機能は理学療法の対象外','B. 腹部マッサージ・姿勢指導・骨盤底リラクゼーション・適度な運動が便秘改善に有効','C. 下剤処方のみが有効','D. 産後の便秘は正常であり介入不要'], answer:'B', explanation:'産後の便秘は骨盤底機能低下・活動量低下・水分不足等が原因。腹部マッサージ・適度な有酸素運動・骨盤底リラクゼーション・排便時の姿勢指導が改善に寄与する。' },
+      { q:'98. 産前産後リハビリにおける「段階的負荷漸増」の原則として正しいのはどれか。', choices:['A. 最初から高強度の運動から開始する','B. 最低負荷から開始し、骨盤底・体幹の反応を評価しながら段階的に負荷を高める','C. 全員に同一プログラムを適用する','D. 痛みがあっても継続する'], answer:'B', explanation:'産前産後リハビリでは「低負荷から開始・骨盤底機能を確認しながら段階的に負荷増加」の原則が基本。疼痛・尿失禁・重圧感は運動強度の再考サインである。' },
+      { q:'99. 産後に「骨盤底過緊張」が疑われる場合の理学療法として正しいのはどれか。', choices:['A. 骨盤底強化運動（収縮）を追加する','B. 骨盤底リラクゼーション・呼吸法・下肢ストレッチ・バイオフィードバックによる弛緩訓練','C. 安静のみ','D. 外科的治療のみが有効'], answer:'B', explanation:'骨盤底過緊張（性交痛・排尿困難・骨盤痛）に対してはPFMT（収縮）ではなく骨盤底リラクゼーション・横隔膜呼吸・ヒップフレクサーストレッチ等の弛緩アプローチが有効である。' },
+      { q:'100. 産前産後リハビリテーション専門家として継続的に自己研鑽すべき理由として最も適切なのはどれか。', choices:['A. 資格取得後は勉強不要','B. エビデンスの更新・新ガイドライン・多職種連携体制の変化に対応し患者の安全と質の高いケアを提供するため','C. 専門的知識は経験のみで習得できる','D. 産前産後リハビリは変化のない分野'], answer:'B', explanation:'産前産後リハビリは骨盤底研究・周産期メンタルヘルス・運動療法エビデンスが急速に進歩している分野であり、常に最新のエビデンスとガイドラインに基づいた実践のために継続的な自己研鑽が不可欠である。' },
+    ]
+  }
+];
+
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+let userInfo = {};
+let testQuestions = [];   // [{chapId, chapTitle, chapColor, q, choices, answer, explanation}, ...]
+let current = 0;
+let answers = [];         // {selected, correct} per question
+let chapScores = {};      // {chapId: {correct, total}}
+
+// ════════════════════════════════════════════════════════════
+// INIT CHIPS
+// ════════════════════════════════════════════════════════════
+(function initChips() {
+  const wrap = document.getElementById('chip-list');
+  CHAPTERS.forEach(ch => {
+    const span = document.createElement('span');
+    span.className = 'chip';
+    span.style.background = ch.color;
+    span.textContent = `${ch.title}：${ch.label}`;
+    wrap.appendChild(span);
+  });
+})();
+
+// ════════════════════════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════════════════════════
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+function setOverlay(v) {
+  document.getElementById('overlay').classList.toggle('show', v);
+}
+
+// ════════════════════════════════════════════════════════════
+// START
+// ════════════════════════════════════════════════════════════
+function startTest() {
+  // Validate
+  const name  = document.getElementById('f-name').value.trim();
+  const age   = document.getElementById('f-age').value.trim();
+  const job   = document.getElementById('f-job').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  let ok = true;
+  [['f-name',name],['f-age',age],['f-job',job],['f-email',email]].forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (!val) { el.classList.add('error'); ok = false; }
+    else el.classList.remove('error');
+  });
+  if (!ok) { alert('必須項目をすべて入力してください。'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('f-email').classList.add('error');
+    alert('正しいメールアドレスを入力してください。'); return;
+  }
+
+  userInfo = { name, age, job, email, startedAt: new Date().toLocaleString('ja-JP') };
+
+  // Build 60 questions (10 per chapter, random)
+  testQuestions = [];
+  chapScores = {};
+  CHAPTERS.forEach(ch => {
+    const picked = shuffle(ch.questions).slice(0, 10);
+    chapScores[ch.id] = { correct: 0, total: 10, title: ch.title, label: ch.label, color: ch.color };
+    picked.forEach(q => {
+      testQuestions.push({ chapId: ch.id, chapTitle: ch.title, chapColor: ch.color, chapBg: ch.bg, ...q });
+    });
+  });
+
+  current = 0;
+  answers = [];
+  showScreen('question');
+  renderQuestion();
+}
+
+// ════════════════════════════════════════════════════════════
+// QUESTION RENDER
+// ════════════════════════════════════════════════════════════
+function renderQuestion() {
+  const q = testQuestions[current];
+  const total = testQuestions.length;
+  const pct = (current / total) * 100;
+
+  // Progress
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-fill').style.background = q.chapColor;
+  document.getElementById('prog-text').textContent = `問 ${current + 1} / ${total}`;
+  const correctSoFar = answers.filter(a => a.correct).length;
+  document.getElementById('score-live').textContent = `正答：${correctSoFar}問`;
+
+  const badge = document.getElementById('chap-badge');
+  badge.textContent = q.chapTitle + '：' + testQuestions.find(qq => qq.chapId === q.chapId)?.chapTitle;
+  badge.style.background = q.chapColor;
+  // simpler label
+  const chap = CHAPTERS.find(c => c.id === q.chapId);
+  badge.textContent = chap ? `${chap.title}　${chap.label}` : q.chapTitle;
+
+  document.getElementById('q-num').textContent = `問題 ${current + 1}`;
+  document.getElementById('q-text').textContent = q.q;
+
+  // Choices
+  const choicesDiv = document.getElementById('choices');
+  choicesDiv.innerHTML = '';
+  q.choices.forEach((c, i) => {
+    const key = c[0];
+    const text = c.slice(3);
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="key">${key}</span><span>${text}</span>`;
+    btn.onclick = () => selectAnswer(key, btn);
+    choicesDiv.appendChild(btn);
+  });
+
+  // Reset
+  document.getElementById('exp-box').className = 'explanation-box';
+  document.getElementById('exp-box').innerHTML = '';
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('q-status').textContent = '';
+}
+
+function selectAnswer(key, btn) {
+  // Already answered?
+  if (document.getElementById('btn-next').disabled === false) return;
+
+  const q = testQuestions[current];
+  const isCorrect = key === q.answer;
+
+  // Mark buttons
+  document.querySelectorAll('.choice-btn').forEach(b => {
+    b.disabled = true;
+    const k = b.querySelector('.key').textContent;
+    if (k === q.answer) b.classList.add('correct');
+    else if (b === btn && !isCorrect) b.classList.add('wrong');
+  });
+
+  // Explanation
+  const expBox = document.getElementById('exp-box');
+  expBox.className = 'explanation-box show ' + (isCorrect ? 'correct-exp' : 'wrong-exp');
+  expBox.innerHTML = `<strong>${isCorrect ? '✓ 正解！' : `✗ 不正解　正解は ${q.answer}`}</strong>${q.explanation}`;
+
+  // Record
+  answers.push({ selected: key, correct: isCorrect });
+  if (isCorrect) chapScores[q.chapId].correct++;
+
+  document.getElementById('q-status').textContent = isCorrect ? '正解 ✓' : '不正解 ✗';
+  document.getElementById('q-status').style.color = isCorrect ? 'var(--green)' : 'var(--red)';
+  document.getElementById('btn-next').disabled = false;
+  document.getElementById('btn-next').textContent = current + 1 < testQuestions.length ? '次の問題 →' : '結果を見る';
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= testQuestions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// RESULT
+// ════════════════════════════════════════════════════════════
+function showResult() {
+  showScreen('result');
+  const total = testQuestions.length;
+  const score = answers.filter(a => a.correct).length;
+  const passed = score >= Math.ceil(total * 0.8);
+
+  // Ring
+  const circumference = 2 * Math.PI * 55;
+  const fill = document.getElementById('ring-fill');
+  fill.style.stroke = passed ? 'var(--green)' : 'var(--red)';
+  setTimeout(() => {
+    fill.style.strokeDashoffset = circumference * (1 - score / total);
+  }, 100);
+
+  document.getElementById('res-score').textContent = score;
+  document.getElementById('res-score').style.color = passed ? 'var(--green)' : 'var(--red)';
+  document.getElementById('res-title').textContent = passed ? '合格 おめでとうございます！' : '不合格';
+  document.getElementById('res-title').style.color = passed ? 'var(--green)' : 'var(--red)';
+  document.getElementById('res-sub').textContent =
+    `${userInfo.name} さん　正答率 ${Math.round(score/total*100)}%　（合格基準：80%以上）`;
+
+  // Table
+  const tbody = document.getElementById('result-tbody');
+  tbody.innerHTML = '';
+  CHAPTERS.forEach(ch => {
+    const sc = chapScores[ch.id];
+    const pct = Math.round(sc.correct / sc.total * 100);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${ch.color};margin-right:8px;"></span>${ch.title}　${ch.label}</td>
+      <td style="font-weight:700">${sc.correct} / ${sc.total}</td>
+      <td>
+        <div class="pct-bar">
+          <div class="pct-track"><div class="pct-fill" style="width:${pct}%;background:${ch.color}"></div></div>
+          <span style="font-size:12px;font-weight:700;color:${ch.color};min-width:36px">${pct}%</span>
+        </div>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Total row
+  const totalPct = Math.round(score/total*100);
+  const trTotal = document.createElement('tr');
+  trTotal.style.fontWeight = '700';
+  trTotal.style.background = 'var(--gray-100)';
+  trTotal.innerHTML = `
+    <td>合計</td>
+    <td>${score} / ${total}</td>
+    <td>
+      <div class="pct-bar">
+        <div class="pct-track"><div class="pct-fill" style="width:${totalPct}%;background:${passed?'var(--green)':'var(--red)'}"></div></div>
+        <span style="font-size:12px;font-weight:700;color:${passed?'var(--green)':'var(--red)'};min-width:36px">${totalPct}%</span>
+      </div>
+    </td>`;
+  tbody.appendChild(trTotal);
+
+  // Add pass/fail badge row
+  const trBadge = document.createElement('tr');
+  trBadge.innerHTML = `<td colspan="3" style="text-align:right;padding:10px 14px">
+    <span class="badge-pass ${passed?'pass':'fail'}">${passed?'PASS':'FAIL'}</span>
+  </td>`;
+  tbody.appendChild(trBadge);
+}
+
+// ════════════════════════════════════════════════════════════
+// SEND TO GOOGLE CHAT
+// ════════════════════════════════════════════════════════════
+async function sendResult() {
+  const btn = document.getElementById('btn-send');
+  const statusEl = document.getElementById('send-status');
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+  setOverlay(true);
+
+  const total = testQuestions.length;
+  const score = answers.filter(a => a.correct).length;
+  const passed = score >= Math.ceil(total * 0.8);
+  const pct = Math.round(score / total * 100);
+  const finishedAt = new Date().toLocaleString('ja-JP');
+
+  // Chapter breakdown
+  const chapLines = CHAPTERS.map(ch => {
+    const sc = chapScores[ch.id];
+    const p = Math.round(sc.correct/sc.total*100);
+    return `　${ch.title}（${ch.label}）: ${sc.correct}/${sc.total}問 (${p}%)`;
+  }).join('\n');
+
+  const text =
+`━━━━━━━━━━━━━━━━━━━━
+📋 産前産後リハビリ 資格確認テスト 結果通知
+━━━━━━━━━━━━━━━━━━━━
+👤 氏名：${userInfo.name}
+🎂 年齢：${userInfo.age}歳
+💼 職種：${userInfo.job}
+📧 メール：${userInfo.email}
+
+📊 結果：${score} / ${total}問正解（${pct}%）
+🏆 判定：${passed ? '✅ 合格（PASS）' : '❌ 不合格（FAIL）'}
+
+📚 章別スコア：
+${chapLines}
+
+🕐 開始：${userInfo.startedAt}
+🕐 終了：${finishedAt}
+━━━━━━━━━━━━━━━━━━━━`;
+
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    });
+    setOverlay(false);
+    if (res.ok) {
+      statusEl.className = 'send-status ok';
+      statusEl.textContent = '✓ Google Chatへの送信が完了しました。';
+      btn.textContent = '送信済み ✓';
+    } else {
+      throw new Error('HTTP ' + res.status);
+    }
+  } catch (e) {
+    setOverlay(false);
+    statusEl.className = 'send-status err';
+    statusEl.textContent = '送信に失敗しました。Webhook URLを確認してください。（' + e.message + '）';
+    btn.disabled = false;
+    btn.textContent = '再送信する';
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// RETAKE
+// ════════════════════════════════════════════════════════════
+function retakeTest() {
+  document.getElementById('send-status').className = 'send-status';
+  document.getElementById('btn-send').disabled = false;
+  document.getElementById('btn-send').textContent = 'Google Chatに結果を送信';
+  showScreen('intro');
+}
+</script>
+</body>
+</html>
